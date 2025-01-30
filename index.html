@@ -5,28 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Туры по Туркменистану</title>
     <style>
-        /* Существующие стили */
+        /* Основные стили */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             line-height: 1.6;
             color: #333;
+            background-color: #f9f9f9;
         }
 
+        /* Плавающее меню */
         .floating-nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 12px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
-        /* Новые стили для галереи */
+        .floating-nav .nav {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .floating-nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .floating-nav a:hover {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Верхний баннер */
+        .top-banner {
+            height: 70vh;
+            background: linear-gradient(rgba(173, 216, 230, 0.3), rgba(255, 255, 255, 0.7)),
+                        url('https://yestravel.ru/upload/information_system_282/1/5/5/item_1558/item_1558.webp') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .top-banner h1 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            padding: 0 20px;
+        }
+
+        /* Галерея */
         .gallery-section {
-            padding: 40px 20px;
+            padding: 60px 20px;
             background: #fff;
         }
 
@@ -40,25 +85,25 @@
             display: flex;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            gap: 15px;
-            padding: 20px 0;
+            gap: 20px;
+            padding: 30px 0;
         }
 
         .gallery-item {
-            flex: 0 0 calc(33.333% - 10px);
-            border-radius: 10px;
+            flex: 0 0 calc(33.333% - 13px);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
             display: block;
         }
@@ -67,123 +112,119 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
             z-index: 10;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #3498db;
-        }
-
-        .slider-btn.prev {
-            left: -50px;
-        }
-
-        .slider-btn.next {
-            right: -50px;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-item {
-                flex: 0 0 calc(50% - 10px);
-            }
-
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 1rem;
-            }
-
-            .slider-btn.prev {
-                left: -20px;
-            }
-
-            .slider-btn.next {
-                right: -20px;
-            }
-        }
-
-        /* Остальные существующие стили */
-        .top-banner {
-            height: 70vh;
-            background: linear-gradient(rgba(173, 216, 230, 0.3), rgba(255, 255, 255, 0.7)),
-                        url('https://sng.today/uploads/posts/2024-03/1711534130_ntz-avaza.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 60px;
         }
 
-        .top-banner h1 {
-            font-size: 3.5rem;
-            color: #2c3e50;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-        }
+        .slider-btn.prev { left: -60px; }
+        .slider-btn.next { right: -60px; }
 
+        /* Основное фото */
         .main-photo {
-            width: 80%;
-            margin: 40px auto;
-            border-radius: 15px;
+            width: 85%;
+            max-width: 1200px;
+            margin: 50px auto;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
+        .main-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Секции */
         .section {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
         .tour-card {
             background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e8e8e8;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-3px);
         }
 
         button {
             background: #3498db;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 14px 32px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            margin-top: 15px;
         }
 
         button:hover {
+            background: #2980b9;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
 
+        /* Футер */
         .footer {
             background: #f8f9fa;
-            padding: 40px 20px;
-            margin-top: 60px;
+            padding: 50px 20px;
+            margin-top: 80px;
             text-align: center;
+            border-top: 1px solid #eee;
         }
 
         .footer p {
-            margin: 10px 0;
+            margin: 15px 0;
             color: #666;
+            font-size: 1.05rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .gallery-item { flex: 0 0 calc(50% - 10px); }
+            .slider-btn { width: 40px; height: 40px; }
+            .slider-btn.prev { left: -30px; }
+            .slider-btn.next { right: -30px; }
+            .top-banner h1 { font-size: 2.8rem; }
         }
 
         @media (max-width: 768px) {
-            .top-banner h1 {
-                font-size: 2.2rem;
-                padding: 0 20px;
-            }
-            
-            .floating-nav .nav {
-                gap: 15px;
-                font-size: 0.9rem;
-            }
+            .floating-nav .nav { gap: 20px; }
+            .gallery-item { flex: 0 0 100%; }
+            .top-banner h1 { font-size: 2.2rem; }
+            .main-photo { width: 90%; }
+            button { width: 100%; }
+        }
+
+        @media (max-width: 576px) {
+            .floating-nav .nav { flex-wrap: wrap; gap: 12px; }
+            .slider-btn { display: none; }
+            .gallery-slider { overflow-x: auto; }
         }
     </style>
 </head>
@@ -203,25 +244,30 @@
         <h1>Путешествия по Туркменистану</h1>
     </div>
 
-    <!-- Новая галерея -->
+    <!-- Галерея -->
     <section class="gallery-section">
         <div class="gallery-container">
             <button class="slider-btn prev">‹</button>
             <div class="gallery-slider">
                 <div class="gallery-item">
-                    <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1904359585v2.jpg" alt="Достопримечательность 1">
+                    <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1904359585v2.jpg" 
+                         alt="Национальный музей Туркменистана">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://www.reuters.com/resizer/v2/LCF7UXQRIJLUTGTSI4NCEHCOI4.jpg?auth=5663457e69c8c4ac91677831557eee26ebf92b0763e522e63f6184bb98b89fdb" alt="Достопримечательность 2">
+                    <img src="https://www.reuters.com/resizer/v2/LCF7UXQRIJLUTGTSI4NCEHCOI4.jpg?auth=5663457e69c8c4ac91677831557eee26ebf92b0763e522e63f6184bb98b89fdb" 
+                         alt="Пустыня Каракумы">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://static01.nyt.com/images/2015/09/22/world/21letter/21letter-superJumbo.jpg" alt="Достопримечательность 3">
+                    <img src="https://static01.nyt.com/images/2015/09/22/world/21letter/21letter-superJumbo.jpg" 
+                         alt="Древний город Мерв">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://bunny-wp-pullzone-nfqzsydbnl.b-cdn.net/wp-content/uploads/2023/04/turkmenistan-sehirleri.jpg" alt="Достопримечательность 4">
+                    <img src="https://bunny-wp-pullzone-nfqzsydbnl.b-cdn.net/wp-content/uploads/2023/04/turkmenistan-sehirleri.jpg" 
+                         alt="Современный Ашхабад">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.squarespace-cdn.com/content/v1/57b9b98a29687f1ef5c622df/1478545405029-HOZ5S4TTVKRMEHH6545I/00000.jpg?format=1500w" alt="Достопримечательность 5">
+                    <img src="https://images.squarespace-cdn.com/content/v1/57b9b98a29687f1ef5c622df/1478545405029-HOZ5S4TTVKRMEHH6545I/00000.jpg?format=1500w" 
+                         alt="Кратер Дарваза">
                 </div>
             </div>
             <button class="slider-btn next">›</button>
@@ -230,7 +276,8 @@
 
     <!-- Основное фото -->
     <div class="main-photo">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/85/01/8e/photo5jpg.jpg?w=900&h=500&s=1">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/85/01/8e/photo5jpg.jpg?w=900&h=500&s=1" 
+             alt="Архитектура Туркменистана">
     </div>
 
     <!-- Секция с турами -->
@@ -240,6 +287,7 @@
         <div class="tour-card">
             <h3>Тур "По Великому Шелковому пути"</h3>
             <p>Длительность: 7 дней</p>
+            <p>Маршрут: Ашхабад → Мерв → Куня-Ургенч → Дашогуз</p>
             <p>Цена: от $850</p>
             <button>Подробнее</button>
         </div>
@@ -247,39 +295,60 @@
         <div class="tour-card">
             <h3>Экскурсия в Дарваза</h3>
             <p>Длительность: 2 дня</p>
+            <p>Маршрут: Ашхабад → Каракумы → Газовый кратер</p>
             <p>Цена: от $300</p>
             <button>Подробнее</button>
         </div>
     </section>
 
     <!-- О компании -->
-    <section id="about" class="section" style="background: #f8f9fa; padding: 40px 20px;">
+    <section id="about" class="section" style="background: #f8f9fa; padding: 50px 20px;">
         <div>
             <h2>О нашей компании</h2>
-            <p>Мы организуем туры с 2010 года. Более 5000 довольных клиентов!</p>
+            <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                С 2010 года мы организуем уникальные путешествия по Туркменистану. 
+                Наша команда профессиональных гидов и экспертов по культуре поможет вам 
+                раскрыть все тайны древних цивилизаций и современного Туркменистана. 
+                Более 5000 довольных клиентов со всего мира!
+            </p>
         </div>
     </section>
 
     <!-- Контакты -->
     <footer class="footer" id="contacts">
         <p>☎️ +993 65 31-52-03</p>
-        <p>📍 г. Ашхабад, ул. Махтумкули, 105</p>
+        <p>📍 г. Ашхабад, проспект Махтумкули, 105</p>
         <p>✉️ contact@dovran.travel-tm.com</p>
-        <p style="margin-top: 25px;">© 2025 Turkmen Travel. Все права защищены</p>
+        <div style="margin-top: 30px;">
+            <p style="color: #999; font-size: 0.9rem;">
+                © 2025 Turkmen Travel. Все права защищены<br>
+                Лицензия туроператора № TR-0154
+            </p>
+        </div>
     </footer>
 
     <script>
-        // Скрипт для листания галереи
+        // Скрипт для галереи
         const slider = document.querySelector('.gallery-slider');
         const items = document.querySelectorAll('.gallery-item');
-        const itemWidth = items[0].offsetWidth + 15;
+        const itemWidth = items[0].offsetWidth + 20;
 
         document.querySelector('.next').addEventListener('click', () => {
-            slider.scrollBy({left: itemWidth, behavior: 'smooth'});
+            slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
         });
 
         document.querySelector('.prev').addEventListener('click', () => {
-            slider.scrollBy({left: -itemWidth, behavior: 'smooth'});
+            slider.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+        });
+
+        // Плавная прокрутка для меню
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
