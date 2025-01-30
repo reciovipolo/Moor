@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Туры по Туркменистану</title>
     <style>
-        /* Новые стили с сохранением структуры */
+        /* Существующие стили */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -13,7 +13,6 @@
             color: #333;
         }
 
-        /* Плавающее меню */
         .floating-nav {
             position: fixed;
             top: 0;
@@ -25,33 +24,94 @@
             backdrop-filter: blur(5px);
         }
 
-        .floating-nav .nav {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+        /* Новые стили для галереи */
+        .gallery-section {
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        .gallery-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
-        .floating-nav a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 10px;
-            border-radius: 5px;
+        .gallery-slider {
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 20px 0;
         }
 
-        .floating-nav a:hover {
+        .gallery-item {
+            flex: 0 0 calc(33.333% - 10px);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            font-size: 1.2rem;
             color: #3498db;
-            background: rgba(52, 152, 219, 0.1);
         }
 
-        /* Верхний баннер */
+        .slider-btn.prev {
+            left: -50px;
+        }
+
+        .slider-btn.next {
+            right: -50px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 calc(50% - 10px);
+            }
+
+            .slider-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+
+            .slider-btn.prev {
+                left: -20px;
+            }
+
+            .slider-btn.next {
+                right: -20px;
+            }
+        }
+
+        /* Остальные существующие стили */
         .top-banner {
             height: 70vh;
             background: linear-gradient(rgba(173, 216, 230, 0.3), rgba(255, 255, 255, 0.7)),
-                        url('images/banner.jpg') center/cover;
+                        url('https://sng.today/uploads/posts/2024-03/1711534130_ntz-avaza.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +125,6 @@
             text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
 
-        /* Основное фото */
         .main-photo {
             width: 80%;
             margin: 40px auto;
@@ -74,13 +133,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .main-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Секции (сохранена оригинальная структура) */
         .section {
             max-width: 1200px;
             margin: 40px auto;
@@ -110,7 +162,6 @@
             transform: translateY(-2px);
         }
 
-        /* Футер с контактами (полностью сохранен) */
         .footer {
             background: #f8f9fa;
             padding: 40px 20px;
@@ -152,9 +203,34 @@
         <h1>Путешествия по Туркменистану</h1>
     </div>
 
+    <!-- Новая галерея -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <button class="slider-btn prev">‹</button>
+            <div class="gallery-slider">
+                <div class="gallery-item">
+                    <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1904359585v2.jpg" alt="Достопримечательность 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.reuters.com/resizer/v2/LCF7UXQRIJLUTGTSI4NCEHCOI4.jpg?auth=5663457e69c8c4ac91677831557eee26ebf92b0763e522e63f6184bb98b89fdb" alt="Достопримечательность 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://static01.nyt.com/images/2015/09/22/world/21letter/21letter-superJumbo.jpg" alt="Достопримечательность 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://bunny-wp-pullzone-nfqzsydbnl.b-cdn.net/wp-content/uploads/2023/04/turkmenistan-sehirleri.jpg" alt="Достопримечательность 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/57b9b98a29687f1ef5c622df/1478545405029-HOZ5S4TTVKRMEHH6545I/00000.jpg?format=1500w" alt="Достопримечательность 5">
+                </div>
+            </div>
+            <button class="slider-btn next">›</button>
+        </div>
+    </section>
+
     <!-- Основное фото -->
     <div class="main-photo">
-        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/85/01/8e/photo5jpg.jpg?w=900&h=500&s=1" alt="Древний город Мерв">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/85/01/8e/photo5jpg.jpg?w=900&h=500&s=1">
     </div>
 
     <!-- Секция с турами -->
@@ -180,16 +256,31 @@
     <section id="about" class="section" style="background: #f8f9fa; padding: 40px 20px;">
         <div>
             <h2>О нашей компании</h2>
-            <p>Мы организуем туры с 2020 года. Более 5000 довольных клиентов!</p>
+            <p>Мы организуем туры с 2010 года. Более 5000 довольных клиентов!</p>
         </div>
     </section>
 
-    <!-- Контакты (полностью сохранены) -->
+    <!-- Контакты -->
     <footer class="footer" id="contacts">
         <p>☎️ +993 65 31-52-03</p>
         <p>📍 г. Ашхабад, ул. Махтумкули, 105</p>
         <p>✉️ contact@dovran.travel-tm.com</p>
         <p style="margin-top: 25px;">© 2025 Turkmen Travel. Все права защищены</p>
     </footer>
+
+    <script>
+        // Скрипт для листания галереи
+        const slider = document.querySelector('.gallery-slider');
+        const items = document.querySelectorAll('.gallery-item');
+        const itemWidth = items[0].offsetWidth + 15;
+
+        document.querySelector('.next').addEventListener('click', () => {
+            slider.scrollBy({left: itemWidth, behavior: 'smooth'});
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            slider.scrollBy({left: -itemWidth, behavior: 'smooth'});
+        });
+    </script>
 </body>
 </html>
