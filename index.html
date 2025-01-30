@@ -5,13 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Туры по Туркменистану</title>
     <style>
-        /* Базовый CSS (рекомендуется вынести в отдельный файл) */
-        body { font-family: Arial, sans-serif; margin: 0; }
-        .header { background: #1a237e; color: white; padding: 15px; }
-        .nav { display: flex; gap: 20px; padding: 10px; }
-        .banner { background: url('https://dropmefiles.com/2D4ri') center/cover; height: 400px; }
-        .tour-card { border: 1px solid #ddd; padding: 15px; margin: 10px; }
-        .footer { background: #333; color: white; padding: 20px; text-align: center; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+        }
+        .header { 
+            background: #1a237e; 
+            color: white; 
+            padding: 15px; 
+            text-align: center;
+        }
+        .nav { 
+            display: flex; 
+            gap: 20px; 
+            padding: 10px;
+            justify-content: center;
+        }
+        .top-banner {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        .top-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .main-photo {
+            width: 80%;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .main-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .tour-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin: 10px;
+            border-radius: 8px;
+        }
+        button {
+            background: #1a237e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .footer { 
+            background: #333; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
@@ -19,30 +71,35 @@
     <header class="header">
         <h1>Путешествия по Туркменистану</h1>
         <nav class="nav">
-            <a href="#tours">Туры</a>
-            <a href="#about">О нас</a>
-            <a href="#contacts">Контакты</a>
-            <a href="/en">English</a>
+            <a href="#tours" style="color: white;">Туры</a>
+            <a href="#about" style="color: white;">О нас</a>
+            <a href="#contacts" style="color: white;">Контакты</a>
         </nav>
     </header>
 
-    <!-- Баннер -->
-    <section class="banner">
-        <h2>Откройте для себя древний Восток</h2>
-    </section>
+    <!-- Верхний баннер -->
+    <div class="top-banner">
+        <img src="https://dropmefiles.com/2D4ri" alt="Вид на пустыню Каракумы">
+    </div>
+
+    <!-- Основное фото по центру -->
+    <div class="main-photo">
+        <img src="https://dropmefiles.com/WCwW7" alt="Древний город Мерв">
+    </div>
 
     <!-- Блок с турами -->
-    <section id="tours" style="padding: 20px;">
-        <h3>Популярные туры</h3>
+    <section id="tours" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <h2 style="text-align: center;">Популярные туры</h2>
+        
         <div class="tour-card">
-            <h4>Тур "По Великому Шелковому пути"</h4>
+            <h3>Тур "По Великому Шелковому пути"</h3>
             <p>Длительность: 7 дней</p>
             <p>Цена: от $850</p>
             <button>Подробнее</button>
         </div>
         
         <div class="tour-card">
-            <h4>Экскурсия в Дарваза</h4>
+            <h3>Экскурсия в Дарваза</h3>
             <p>Длительность: 2 дня</p>
             <p>Цена: от $300</p>
             <button>Подробнее</button>
@@ -50,16 +107,23 @@
     </section>
 
     <!-- О компании -->
-    <section id="about" style="padding: 20px; background: #f5f5f5;">
-        <h3>О нашей компании</h3>
-        <p>Мы организуем туры с 2010 года. Более 5000 довольных клиентов!</p>
+    <section id="about" style="padding: 40px 20px; background: #f5f5f5;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center;">О нашей компании</h2>
+            <p style="line-height: 1.6;">
+                Мы специализируемся на организации уникальных туров по Туркменистану с 2010 года. 
+                Наши профессиональные гиды помогут вам открыть красоты древних городов, 
+                загадки пустыни Каракумы и современные достопримечательности Ашхабада.
+            </p>
+        </div>
     </section>
 
     <!-- Контакты -->
     <footer class="footer" id="contacts">
-        <p>Контакты: +993 12 34-56-78</p>
-        <p>Адрес: г. Ашхабад, ул. Махтумкули, 105</p>
-        <p>© 2024 Все права защищены</p>
+        <p>☎️ +993 65 31-52-03</p>
+        <p>📍 г. Ашхабад, ул. Махтумкули, 105</p>
+        <p>✉️ contact@travel-tm.com</p>
+        <p style="margin-top: 20px;">© 2024 Turkmen Travel. Все права защищены</p>
     </footer>
 </body>
 </html>
