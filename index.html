@@ -351,5 +351,24 @@
             });
         });
     </script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script> <!-- Если нужна база данных -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script> <!-- Если нужна аутентификация -->
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDXCSrY9MN1IyhxwIIIZXdNAFprba4RqmM",
+  authDomain: "dovrantravel.firebaseapp.com",
+  projectId: "dovrantravel",
+  storageBucket: "dovrantravel.firebasestorage.app",
+  messagingSenderId: "927599941097",
+  appId: "1:927599941097:web:735abfc60907087011e778",
+  measurementId: "G-MFELWGLG34"
+};
+
+  // Инициализация Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(); // Для Firestore
+  const auth = firebase.auth(); // Для аутентификации
+</script>
 </body>
 </html>
