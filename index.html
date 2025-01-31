@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Туры по Туркменистану</title>
+    <!-- Подключение Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Основные стили */
         body {
@@ -70,14 +72,17 @@
             background: none;
             border: none;
             color: #2c3e50;
-            font-weight: 500;
-            padding: 5px 8px;
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s;
+            padding: 8px;
+            border-radius: 50%;
         }
         body.dark-mode .theme-toggle-nav {
             color: #e0e0e0;
+        }
+        .theme-toggle-nav:hover {
+            background: rgba(52, 152, 219, 0.1);
         }
 
         /* Верхний баннер */
@@ -298,7 +303,9 @@
             <a href="#contacts">Контакты</a>
             <a href="/en">English</a>
         </div>
-        <button class="theme-toggle-nav" onclick="toggleTheme()">Тёмная тема</button>
+        <button class="theme-toggle-nav" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i> <!-- Иконка луны -->
+        </button>
     </nav>
 
     <!-- Верхний баннер -->
@@ -395,14 +402,16 @@
         // Функция переключения темы
         function toggleTheme() {
             const body = document.body;
-            const themeButton = document.querySelector('.theme-toggle-nav');
+            const themeButton = document.querySelector('.theme-toggle-nav i');
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
-                themeButton.textContent = 'Светлая тема';
+                themeButton.classList.remove('fa-moon');
+                themeButton.classList.add('fa-sun');
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeButton.textContent = 'Тёмная тема';
+                themeButton.classList.remove('fa-sun');
+                themeButton.classList.add('fa-moon');
                 localStorage.setItem('theme', 'light');
             }
         }
@@ -410,7 +419,8 @@
         // Проверка сохраненной темы
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            document.querySelector('.theme-toggle-nav').textContent = 'Светлая тема';
+            document.querySelector('.theme-toggle-nav i').classList.remove('fa-moon');
+            document.querySelector('.theme-toggle-nav i').classList.add('fa-sun');
         }
 
         // Скрипт для галереи
