@@ -11,7 +11,7 @@
             margin: 0;
             line-height: 1.6;
             color: #333;
-            background-color: #f9f9f9;
+            background-color: white;
         }
 
         /* Плавающее меню */
@@ -155,6 +155,7 @@
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
+            background: none;
         }
 
         .tour-card {
@@ -191,7 +192,7 @@
 
         /* Футер */
         .footer {
-            background: #f8f9fa;
+            background: #f8f9fa !important;
             padding: 50px 20px;
             margin-top: 80px;
             text-align: center;
@@ -302,7 +303,7 @@
     </section>
 
     <!-- О компании -->
-    <section id="about" class="section" style="background: none !important; 50px 20px;">
+    <section id="about" class="section">
         <div>
             <h2>О нашей компании</h2>
             <p style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
@@ -352,8 +353,8 @@
         });
     </script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script> <!-- Если нужна база данных -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script> <!-- Если нужна аутентификация -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDXCSrY9MN1IyhxwIIIZXdNAFprba4RqmM",
@@ -365,10 +366,9 @@ const firebaseConfig = {
   measurementId: "G-MFELWGLG34"
 };
 
-  // Инициализация Firebase
   const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore(); // Для Firestore
-  const auth = firebase.auth(); // Для аутентификации
+  const db = firebase.firestore();
+  const auth = firebase.auth();
 </script>
 </body>
 </html>
