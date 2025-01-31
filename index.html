@@ -32,7 +32,7 @@
             z-index: 1000;
             backdrop-filter: blur(8px);
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Центрируем меню */
             align-items: center;
             transition: all 0.3s;
             overflow-x: auto;
@@ -46,7 +46,7 @@
             display: flex;
             gap: 25px;
             align-items: center;
-            padding: 0 15px;
+            padding: 0; /* Убираем внутренние отступы */
             flex-wrap: nowrap;
         }
 
@@ -74,12 +74,14 @@
             color: #2c3e50;
             font-size: 1.2rem;
             cursor: pointer;
-            padding: 8px;
+            padding: 8px 12px !important; /* Синхронизируем padding */
             border-radius: 50%;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             white-space: nowrap;
+            margin-left: 15px; /* Отступ слева */
+            transform: translateY(1px); /* Тонкая регулировка */
         }
         body.dark-mode .theme-toggle-nav {
             color: #e0e0e0;
@@ -287,7 +289,11 @@
             .nav { gap: 15px; }
             .floating-nav { padding: 10px 15px; }
             .floating-nav a { padding: 6px 10px; }
-            .theme-toggle-nav { font-size: 1.1rem; }
+            .theme-toggle-nav { 
+                font-size: 1.1rem;
+                margin-left: 10px;
+                padding: 6px 10px !important;
+            }
             .top-banner h1 { font-size: 2.2rem; }
             button { width: 100%; }
         }
@@ -357,7 +363,7 @@
         <h2>Популярные туры</h2>
         
         <div class="tour-card">
-            <img src="https://dolorestravel.com/uploads/ModelContentRow/4/service_content-5d6fd2ed61b90.jpg" 
+            <img src="https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1904359585v2.jpg" 
                  alt="Тур по Великому Шелковому пути">
             <div class="tour-card-content">
                 <h3>Тур "По Великому Шелковому пути"</h3>
@@ -369,7 +375,7 @@
         </div>
         
         <div class="tour-card">
-            <img src="https://www.orexca.com/img/turkmenistan/darvaza/darvaza-gas-crater.jpg" 
+            <img src="https://images.squarespace-cdn.com/content/v1/57b9b98a29687f1ef5c622df/1478545405029-HOZ5S4TTVKRMEHH6545I/00000.jpg?format=1500w" 
                  alt="Экскурсия в Дарваза">
             <div class="tour-card-content">
                 <h3>Экскурсия в Дарваза</h3>
