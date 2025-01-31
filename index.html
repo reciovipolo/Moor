@@ -77,6 +77,7 @@
             transition: all 0.3s;
             padding: 8px;
             border-radius: 50%;
+            margin-left: 20px; /* Отступ от кнопки English */
         }
         body.dark-mode .theme-toggle-nav {
             color: #e0e0e0;
@@ -302,10 +303,10 @@
             <a href="#about">О нас</a>
             <a href="#contacts">Контакты</a>
             <a href="/en">English</a>
+            <button class="theme-toggle-nav" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i> <!-- Иконка луны -->
+            </button>
         </div>
-        <button class="theme-toggle-nav" onclick="toggleTheme()">
-            <i class="fas fa-moon"></i> <!-- Иконка луны -->
-        </button>
     </nav>
 
     <!-- Верхний баннер -->
