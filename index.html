@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Туры по Туркменистану</title>
-    <!-- Подключение Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Основные стили */
@@ -36,19 +35,19 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s;
+            overflow-x: auto;
         }
         body.dark-mode .floating-nav {
             background: rgba(18, 18, 18, 0.98);
-            padding: 12px 0;
             box-shadow: 0 2px 15px rgba(255,255,255,0.1);
-            z-index: 1000;
-            backdrop-filter: blur(8px);
         }
 
         .nav {
             display: flex;
-            gap: 35px;
-            margin: 0 auto;
+            gap: 25px;
+            align-items: center;
+            padding: 0 15px;
+            flex-wrap: nowrap;
         }
 
         .floating-nav a {
@@ -58,6 +57,7 @@
             transition: all 0.3s;
             padding: 8px 12px;
             border-radius: 8px;
+            white-space: nowrap;
         }
         body.dark-mode .floating-nav a {
             color: #e0e0e0;
@@ -67,17 +67,19 @@
             background: rgba(52, 152, 219, 0.1);
         }
 
-        /* Кнопка темы в навбаре */
+        /* Кнопка темы */
         .theme-toggle-nav {
             background: none;
             border: none;
             color: #2c3e50;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s;
             padding: 8px;
             border-radius: 50%;
-            margin-left: 20px; /* Отступ от кнопки English */
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
         }
         body.dark-mode .theme-toggle-nav {
             color: #e0e0e0;
@@ -282,16 +284,22 @@
         }
 
         @media (max-width: 768px) {
-            .floating-nav .nav { gap: 20px; }
-            .gallery-item { flex: 0 0 100%; }
+            .nav { gap: 15px; }
+            .floating-nav { padding: 10px 15px; }
+            .floating-nav a { padding: 6px 10px; }
+            .theme-toggle-nav { font-size: 1.1rem; }
             .top-banner h1 { font-size: 2.2rem; }
             button { width: 100%; }
         }
 
         @media (max-width: 576px) {
-            .floating-nav .nav { flex-wrap: wrap; gap: 12px; }
+            .nav { gap: 12px; padding: 0 10px; }
+            .floating-nav { padding: 8px 10px; }
+            .floating-nav a { font-size: 0.9rem; }
+            .theme-toggle-nav { font-size: 1rem; }
             .slider-btn { display: none; }
             .gallery-slider { overflow-x: auto; }
+            .top-banner h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -304,7 +312,7 @@
             <a href="#contacts">Контакты</a>
             <a href="/en">English</a>
             <button class="theme-toggle-nav" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i> <!-- Иконка луны -->
+                <i class="fas fa-moon"></i>
             </button>
         </div>
     </nav>
@@ -407,12 +415,10 @@
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
-                themeButton.classList.remove('fa-moon');
-                themeButton.classList.add('fa-sun');
+                themeButton.classList.replace('fa-moon', 'fa-sun');
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeButton.classList.remove('fa-sun');
-                themeButton.classList.add('fa-moon');
+                themeButton.classList.replace('fa-sun', 'fa-moon');
                 localStorage.setItem('theme', 'light');
             }
         }
@@ -420,8 +426,7 @@
         // Проверка сохраненной темы
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            document.querySelector('.theme-toggle-nav i').classList.remove('fa-moon');
-            document.querySelector('.theme-toggle-nav i').classList.add('fa-sun');
+            document.querySelector('.theme-toggle-nav i').classList.replace('fa-moon', 'fa-sun');
         }
 
         // Скрипт для галереи
