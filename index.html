@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Туры по Туркменистану</title>
+  <!-- Подключаем Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* Основные стили */
@@ -31,10 +32,9 @@
       z-index: 1000;
       backdrop-filter: blur(8px);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       transition: all 0.3s;
-      overflow-x: auto;
     }
     body.dark-mode .floating-nav {
       background: rgba(18, 18, 18, 0.98);
@@ -45,6 +45,7 @@
       gap: 25px;
       align-items: center;
       flex-wrap: nowrap;
+      justify-content: center;
     }
     .floating-nav a {
       color: #2c3e50;
@@ -62,34 +63,11 @@
       color: #3498db;
       background: rgba(52, 152, 219, 0.1);
     }
-    /* Кнопка переключения темы (иконка) */
-    .theme-toggle-nav {
-      background: none;
-      border: none;
-      color: #2c3e50;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 8px 12px !important;
-      border-radius: 50%;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      margin-left: 15px;
-      transform: translateY(1px);
-    }
-    body.dark-mode .theme-toggle-nav {
-      color: #e0e0e0;
-    }
-    .theme-toggle-nav:hover {
-      background: rgba(52, 152, 219, 0.1);
-    }
-    /* Кнопка переключения языка */
+    /* Кнопка переключения языка (флаги) */
     .lang-switch {
       background: none;
       border: none;
-      color: #2c3e50;
-      font-weight: 500;
+      font-size: 1.3rem;
       cursor: pointer;
       padding: 8px 12px;
       transition: all 0.3s;
@@ -99,7 +77,24 @@
       color: #e0e0e0;
     }
     .lang-switch:hover {
-      color: #3498db;
+      background: rgba(52, 152, 219, 0.1);
+    }
+    /* Кнопка переключения темы (иконка) */
+    .theme-toggle-nav {
+      background: none;
+      border: none;
+      color: #2c3e50;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    body.dark-mode .theme-toggle-nav {
+      color: #e0e0e0;
+    }
+    .theme-toggle-nav:hover {
       background: rgba(52, 152, 219, 0.1);
     }
     /* Верхний баннер */
@@ -369,7 +364,7 @@
       .theme-toggle-nav { 
         font-size: 1.1rem;
         margin-left: 10px;
-        padding: 6px 10px !important;
+        padding: 6px 10px;
       }
       .lang-switch {
         font-size: 1rem;
@@ -398,8 +393,11 @@
       <a href="#tours" id="nav-tours">Туры</a>
       <a href="#about" id="nav-about">О нас</a>
       <a href="#contacts" id="nav-contacts">Контакты</a>
-      <!-- Кнопка переключения языка -->
-      <button class="lang-switch" id="lang-switch" onclick="toggleLanguage()">English</button>
+      <!-- Кнопка переключения языка с флагами -->
+      <button class="lang-switch" id="lang-switch" onclick="toggleLanguage()">
+        <!-- При русском языке показываем флаг России, при английском – флаг Великобритании -->
+        <span class="flag-icon" id="current-flag">🇷🇺</span>
+      </button>
       <!-- Кнопка переключения темы -->
       <button class="theme-toggle-nav" onclick="toggleTheme()">
         <i class="fas fa-moon"></i>
@@ -545,8 +543,7 @@
         nav: {
           tours: "Туры",
           about: "О нас",
-          contacts: "Контакты",
-          langButton: "English"
+          contacts: "Контакты"
         },
         banner: "Путешествия по Туркменистану",
         toursSection: "Популярные туры",
@@ -588,14 +585,13 @@
           messagePlaceholder: "Напишите ваше сообщение",
           submitButton: "Отправить"
         },
-        footer: "© 2025 Turkmen Travel. Все права защищены\nЛицензия туроператора № TR-0154"
+        footer: "© 2025 Turkmen Travel. Все права защищены<br>Лицензия туроператора № TR-0154"
       },
       en: {
         nav: {
           tours: "Tours",
           about: "About Us",
-          contacts: "Contacts",
-          langButton: "Русский"
+          contacts: "Contacts"
         },
         banner: "Travel in Turkmenistan",
         toursSection: "Popular Tours",
@@ -637,7 +633,7 @@
           messagePlaceholder: "Write your message",
           submitButton: "Submit"
         },
-        footer: "© 2025 Turkmen Travel. All rights reserved\nTour operator license № TR-0154"
+        footer: "© 2025 Turkmen Travel. All rights reserved<br>Tour operator license № TR-0154"
       }
     };
 
@@ -647,11 +643,16 @@
       document.getElementById('nav-tours').textContent = translations[lang].nav.tours;
       document.getElementById('nav-about').textContent = translations[lang].nav.about;
       document.getElementById('nav-contacts').textContent = translations[lang].nav.contacts;
-      document.getElementById('lang-switch').textContent = translations[lang].nav.langButton;
-
+      // Обновляем флаг в кнопке языка
+      const langSwitch = document.getElementById('lang-switch');
+      const flagIcon = document.getElementById('current-flag');
+      if (lang === 'ru') {
+        flagIcon.textContent = "🇷🇺";
+      } else {
+        flagIcon.textContent = "🇬🇧";
+      }
       // Баннер
       document.getElementById('banner-title').textContent = translations[lang].banner;
-
       // Секция туров
       document.getElementById('tours-section-title').textContent = translations[lang].toursSection;
       // Тур 1
@@ -674,11 +675,9 @@
       document.getElementById('tour4-duration').textContent = translations[lang].tour4.duration;
       document.getElementById('tour4-price').textContent = translations[lang].tour4.price;
       document.getElementById('tour4-button').textContent = translations[lang].tour4.button;
-
       // О компании
       document.getElementById('about-title').textContent = translations[lang].about.title;
       document.getElementById('about-text').textContent = translations[lang].about.text;
-
       // Форма обратной связи
       document.getElementById('feedback-title').textContent = translations[lang].feedback.title;
       document.getElementById('label-name').textContent = translations[lang].feedback.nameLabel;
@@ -688,21 +687,17 @@
       document.getElementById('label-message').textContent = translations[lang].feedback.messageLabel;
       document.getElementById('message').placeholder = translations[lang].feedback.messagePlaceholder;
       document.getElementById('submit-button').textContent = translations[lang].feedback.submitButton;
-
       // Футер
-      document.getElementById('footer-text').innerHTML = translations[lang].footer.replace(/\n/g, "<br>");
-      
-      // Сохраняем выбор языка в localStorage
+      document.getElementById('footer-text').innerHTML = translations[lang].footer;
+      // Сохраняем выбор языка
       localStorage.setItem('language', lang);
     }
-
     // Функция переключения языка при нажатии на кнопку
     function toggleLanguage() {
       const currentLang = localStorage.getItem('language') || 'ru';
       const newLang = currentLang === 'ru' ? 'en' : 'ru';
       setLanguage(newLang);
     }
-
     // При загрузке страницы устанавливаем сохранённый язык или русский по умолчанию
     const savedLanguage = localStorage.getItem('language') || 'ru';
     setLanguage(savedLanguage);
@@ -725,7 +720,6 @@
       document.body.classList.add('dark-mode');
       document.querySelector('.theme-toggle-nav i').classList.replace('fa-moon', 'fa-sun');
     }
-
     // Скрипт для галереи
     const slider = document.querySelector('.gallery-slider');
     const items = document.querySelectorAll('.gallery-item');
@@ -746,7 +740,7 @@
       });
     });
     // Обработка формы обратной связи
-    document.getElementById('feedback-form').addEventListener('submit', function (e) {
+    document.getElementById('feedback-form')?.addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(this);
       const data = {};
